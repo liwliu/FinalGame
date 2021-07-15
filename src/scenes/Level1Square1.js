@@ -20,6 +20,9 @@ class Level1Square1 extends Phaser.Scene {
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
+        //checkpoint
+        this.checkpoint = this.add.tileSprite(127, 509, 64, 64, 'checkpoint').setOrigin(0,0);
+
         //checks if player already has key
         if(game.settings.key == true){
             this.haskey = true;
@@ -30,7 +33,6 @@ class Level1Square1 extends Phaser.Scene {
         //camera
         this.cameras.main.setSize(500,500);
         this.cameras.main.setBounds(0,0,1000, 1000);
-
         this.cameras.main.startFollow(this.explorer);
 
         //set keyboard input
