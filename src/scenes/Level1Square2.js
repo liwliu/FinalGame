@@ -41,25 +41,25 @@ class Level1Square2 extends Phaser.Scene {
             }
             this.scene.start("Level1Square1");
         }
+
         if(this.game.settings.gameover == true && this.explorer.y < 7){ 
             this.explorer.destroy();
-            if(this.explorer.x >=650 && this.explorer.x <=845){
+            if(this.explorer.x >=650){
                 game.settings = {
                     x: this.explorer.x,
-                    y: 961,
+                    y: 955,
                     gameover: false,
                     screen: 13
                 }
-                this.scene.start("Level1Square3");
             }
-            // else if(this.explorer.x > ){
-            //     game.settings = {
-            //         x: 465,
-            //         y: 961,
-            //         gameover: false,
-            //         screen: 13
-            //     }
-            // }
+            else if(this.explorer.x >= 579){
+                 game.settings= {
+                     x: 650,
+                     y: 955,
+                     gameover: false,
+                     screen: 13
+                 }
+             }
             // else{
             //     game.settings = {
             //         x: 326.75,
@@ -69,6 +69,7 @@ class Level1Square2 extends Phaser.Scene {
             //     }
             // }
            
+                this.scene.start("Level1Square3");
         }
         this.explorer.update();
     }

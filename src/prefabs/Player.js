@@ -7,34 +7,38 @@ class Player extends Phaser.GameObjects.Sprite {
 
     update() {
         if(this.x < 0){
-            this.x+=.75;
+            this.x+=10;
             //return to square 1 from square 2
             if(game.settings.screen == 12 && this.y <= 176 && this.y >= 50){
                 game.settings.gameover = true; 
             }
-            //go to square 3 
-            if(game.settings.screen == 13 && this.y <= 87.25 && this.y >= 43.75){
+            //go to square 4 
+            if(game.settings.screen == 13 && this.y <= 87.25 && this.y >= 205.25){
                 game.settings.gameover = true; 
             }
         }
         if(this.y < 5){
-            this.y+=.75;
+            this.y+=10;
             //go to square 3
-            if(game.settings.screen == 12 && this.x <=830   && this.x >= 650){
+            if(game.settings.screen == 12 && this.x <=812   && this.x >= 579){
                 game.settings.gameover = true; 
             }
         }
 
         if(this.x > 970){
-            this.x-=.75;
+            this.x-=10;
             //go to square 2
             if(game.settings.screen == 11 &&this.y <= 166 && this.y >= 46){
                 game.settings.gameover = true; 
             }
+            //return to square 3 from 4
+            if(game.settings.screen == 14 && this.y >= 81 && this.y <= 211){
+                game.settings.gameover = true;
+            }
         }
 
         if(this.y > 965){
-            this.y-=.75;
+            this.y-=10;
             //return to square 2 from square 3
             if(game.settings.screen == 13 && this.x <= 830  && this.x >= 650){
                 game.settings.gameover = true; 
