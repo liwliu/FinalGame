@@ -17,11 +17,11 @@ class Level1Square3 extends Phaser.Scene {
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
-        console.log(game.settings.x);
-        console.log(game.settings.y);
 
         //camera
         this.cameras.main.setSize(500,500);
+        this.cameras.main.setBounds(0,0,1000, 1000);
+
         this.cameras.main.startFollow(this.explorer);
 
         //set keyboard input
@@ -36,7 +36,6 @@ class Level1Square3 extends Phaser.Scene {
         if(this.game.settings.gameover == true && this.explorer.y > 960){ 
             this.explorer.destroy();
             if(this.explorer.x <= 830 && this.explorer.x>= 560){
-                console.log("should be going");
                 game.settings = {
                     x: this.explorer.x, 
                     y: 5.25,
@@ -66,7 +65,13 @@ class Level1Square3 extends Phaser.Scene {
             this.scene.start("Level1Square4");
         }
         this.explorer.update();
+        //this.checkcamera();
     }
-
+    
+    /*checkcamera(){
+        if(this.explorer.y < 250){
+            this.camera.y
+        }
+    }*/
 
 }

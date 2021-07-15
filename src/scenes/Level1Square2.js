@@ -20,6 +20,7 @@ class Level1Square2 extends Phaser.Scene {
 
         //camera
         this.cameras.main.setSize(500,500);
+        this.cameras.main.setBounds(0,0,1000, 1000);
 
         this.cameras.main.startFollow(this.explorer);
 
