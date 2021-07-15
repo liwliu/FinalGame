@@ -19,7 +19,7 @@ let config = {
     typer: Phaser.Auto,
     width: 500,
     height: 500,
-    scene: [Menu, Level1Square1, Level1Square2, Level1Square3, Level1Square4]
+    scene: [Preload, Menu, Level1Square1, Level1Square2, Level1Square3, Level1Square4]
 }
 
 let game = new Phaser.Game(config);

@@ -3,11 +3,11 @@ class Level1Square1 extends Phaser.Scene {
         super("Level1Square1");
     }
 
-    preload() {
-        //assets
-        this.load.image('background1', './assets/img/startingBackground.png');
-        this.load.image('playersprite', './assets/img/characterSpritesmall.png');
-    }
+    // preload() {
+    //     //assets
+    //     this.load.image('background1', './assets/img/startingBackground.png');
+    //     this.load.image('playersprite', './assets/img/characterSpritesmall.png');
+    // }
 
     create() {
 
