@@ -20,6 +20,13 @@ class Level1Square1 extends Phaser.Scene {
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
+        //checks if player already has key
+        if(game.settings.key == true){
+            this.haskey = true;
+        }
+        else{
+            this.haskey = false;
+        }
         //camera
         this.cameras.main.setSize(500,500);
         this.cameras.main.setBounds(0,0,1000, 1000);
@@ -40,7 +47,8 @@ class Level1Square1 extends Phaser.Scene {
                 x: 1.25,
                 y: this.explorer.y,
                 gameover: false,
-                screen: 12
+                screen: 12,
+                key: this.haskey 
             }
             this.scene.start("Level1Square2");
         }

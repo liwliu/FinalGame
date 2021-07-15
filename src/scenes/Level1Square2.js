@@ -11,13 +11,20 @@ class Level1Square2 extends Phaser.Scene {
 
     create() {
         //variable to make this square accessible by other objects
-        window.Level1Square1 = this;
+        window.Level1Square2 = this;
+
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background2').setOrigin(0,0);
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
+        //load in key
+        if(game.settings.key == false){
+            this.key = new Key(this, 764, 840.5, 'keysprite', 0).setOrigin(0,0);
+        }else{
+            this.key = new Key(this, 1300, 1300, 'keysprite', 0).setOrigin(0,0);
+        }
         //camera
         this.cameras.main.setSize(500,500);
         this.cameras.main.setBounds(0,0,1000, 1000);
@@ -32,13 +39,28 @@ class Level1Square2 extends Phaser.Scene {
     }
 
     update() {
+        //do not move this function it is very important that it is at the beginning of update()
+        this.key.update();
+
         if(this.game.settings.gameover == true && this.explorer.x < 2){ 
             this.explorer.destroy();
-            game.settings = {
-                x: 970,
-                y: this.explorer.y,
-                gameover: false,
-                screen: 11
+            if(game.settings.key == false){
+                game.settings = {
+                    x: 970,
+                    y: this.explorer.y,
+                    gameover: false,
+                    screen: 11,
+                    key: false
+                }
+            }
+            else{
+                game.settings = {
+                    x: 970,
+                    y: this.explorer.y,
+                    gameover: false,
+                    screen: 11,
+                    key: true 
+                }
             }
             this.scene.start("Level1Square1");
         }
@@ -50,7 +72,8 @@ class Level1Square2 extends Phaser.Scene {
                     x: this.explorer.x,
                     y: 955,
                     gameover: false,
-                    screen: 13
+                    screen: 13,
+                    key: false
                 }
             }
             else if(this.explorer.x >= 579){
@@ -58,7 +81,8 @@ class Level1Square2 extends Phaser.Scene {
                      x: 650,
                      y: 955,
                      gameover: false,
-                     screen: 13
+                     screen: 13,
+                     key: false
                  }
              }
             // else{

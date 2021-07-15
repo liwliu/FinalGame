@@ -26,6 +26,7 @@ class Preload extends Phaser.Scene{
         // Sprites
         this.load.image('playersprite', './assets/img/characterSpritesmall.png');
 
+        this.load.image('keysprite', './assets/img/Key.png');
 
     }
 

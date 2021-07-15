@@ -18,6 +18,14 @@ class Level1Square3 extends Phaser.Scene {
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
+        //load in key
+        if(game.settings.key == false){
+        this.key = new Key(this, 39, 945, 'keysprite', 0).setOrigin(0,0);
+        }
+        else{
+            this.key = new Key(this, 1300, 1300, 'keysprite', 0).setOrigin(0,0);
+        }
+
         //camera
         this.cameras.main.setSize(500,500);
         this.cameras.main.setBounds(0,0,1000, 1000);
@@ -40,7 +48,8 @@ class Level1Square3 extends Phaser.Scene {
                     x: this.explorer.x, 
                     y: 5.25,
                     gameover: false,
-                    screen: 12
+                    screen: 12,
+                    key: true
                 }
                 this.scene.start("Level1Square2");
             }
@@ -60,11 +69,13 @@ class Level1Square3 extends Phaser.Scene {
                     x: 959, 
                     y: this.explorer.y,
                     gameover: false,
-                    screen: 14
+                    screen: 14,
+                    key: false
                 }
             this.scene.start("Level1Square4");
         }
         this.explorer.update();
+        this.key.update();
         //this.checkcamera();
     }
     

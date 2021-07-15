@@ -13,14 +13,14 @@ class Player extends Phaser.GameObjects.Sprite {
                 game.settings.gameover = true; 
             }
             //go to square 4 
-            if(game.settings.screen == 13 && this.y >= 87.25 && this.y <= 205.25){
+            if(game.settings.screen == 13 && this.y >= 87.25 && this.y <= 205.25 && game.settings.key == true){
                 game.settings.gameover = true; 
             }
         }
         if(this.y < 5){
             this.y+=5;
             //go to square 3
-            if(game.settings.screen == 12 && this.x <=812   && this.x >= 579){
+            if(game.settings.screen == 12 && this.x <=812   && this.x >= 579 && game.settings.key == true){
                 game.settings.gameover = true; 
             }
         }

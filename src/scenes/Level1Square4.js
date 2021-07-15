@@ -43,7 +43,8 @@ class Level1Square4 extends Phaser.Scene {
                 x: 9, 
                 y: this.explorer.y,
                 gameover: false,
-                screen: 13
+                screen: 13,
+                key: true
             }
             this.scene.start("Level1Square3");
          }
