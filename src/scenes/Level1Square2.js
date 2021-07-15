@@ -13,10 +13,15 @@ class Level1Square2 extends Phaser.Scene {
         //variable to make this square accessible by other objects
         window.Level1Square1 = this;
         //load in background
-        this.Background = this.add.tileSprite(0,0, 500, 500, 'background2').setOrigin(0,0);
+        this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background2').setOrigin(0,0);
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
+
+        //camera
+        this.cameras.main.setSize(500,500);
+
+        this.cameras.main.startFollow(this.explorer);
 
         //set keyboard input
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -29,7 +34,7 @@ class Level1Square2 extends Phaser.Scene {
         if(this.game.settings.gameover == true && this.explorer.x < 2){ 
             this.explorer.destroy();
             game.settings = {
-                x: 469,
+                x: 970,
                 y: this.explorer.y,
                 gameover: false,
                 screen: 11
@@ -38,31 +43,32 @@ class Level1Square2 extends Phaser.Scene {
         }
         if(this.game.settings.gameover == true && this.explorer.y < 7){ 
             this.explorer.destroy();
-            if(this.explorer.x >=326.75 && this.explorer.x <=465){
+            if(this.explorer.x >=650 && this.explorer.x <=845){
                 game.settings = {
                     x: this.explorer.x,
-                    y: 463,
+                    y: 961,
                     gameover: false,
                     screen: 13
                 }
+                this.scene.start("Level1Square3");
             }
-            else if(this.explorer.x > 465){
-                game.settings = {
-                    x: 465,
-                    y: 463,
-                    gameover: false,
-                    screen: 13
-                }
-            }
-            else{
-                game.settings = {
-                    x: 326.75,
-                    y: 463,
-                    gameover: false,
-                    screen: 13
-                }
-            }
-            this.scene.start("Level1Square3");
+            // else if(this.explorer.x > ){
+            //     game.settings = {
+            //         x: 465,
+            //         y: 961,
+            //         gameover: false,
+            //         screen: 13
+            //     }
+            // }
+            // else{
+            //     game.settings = {
+            //         x: 326.75,
+            //         y: 961,
+            //         gameover: false,
+            //         screen: 13
+            //     }
+            // }
+           
         }
         this.explorer.update();
     }

@@ -10,13 +10,20 @@ class Level1Square1 extends Phaser.Scene {
     }
 
     create() {
+
+        
         //variable to make this square accessible by other objects
         window.Level1Square1 = this;
         //load in background
-        this.Background = this.add.tileSprite(0,0, 500, 500, 'background1').setOrigin(0,0);
+        this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background1').setOrigin(0,0);
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
+
+        //camera
+        this.cameras.main.setSize(500,500);
+
+        this.cameras.main.startFollow(this.explorer);
 
         //set keyboard input
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);

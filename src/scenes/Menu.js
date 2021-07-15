@@ -35,8 +35,8 @@ class Menu extends Phaser.Scene {
     update() {
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
           game.settings = {
-            x: 250,
-            y: 250,
+            x: 142,
+            y: 559,
             gameover: false,
             screen: 11
           }

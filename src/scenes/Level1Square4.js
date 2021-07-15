@@ -13,10 +13,17 @@ class Level1Square4 extends Phaser.Scene {
         //variable to make this square accessible by other objects
         window.Level1Square4 = this;
         //load in background
-        this.Background = this.add.tileSprite(0,0, 500, 500, 'background4').setOrigin(0,0);
+        this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background4').setOrigin(0,0);
+        
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
+
+        //camera
+        this.cameras.main.setSize(500,500);
+        this.cameras.main.startFollow(this.explorer);
+
+        
 
         //set keyboard input
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -27,6 +34,17 @@ class Level1Square4 extends Phaser.Scene {
 
     update() {
         this.explorer.update();
+
+
+        if(this.explorer.x >980  && this.explorer.y >= 61 && this.explorer.y <= 211){
+            game.settings = {
+                x: 9, 
+                y: this.explorer.y,
+                gameover: false,
+                screen: 14
+        }
+        this.scene.start("Level1Square3");
+    }
     }
 
 
