@@ -34,7 +34,7 @@ class Level1Square3 extends Phaser.Scene {
     update() {
 
         if(this.game.settings.gameover == true && this.explorer.y > 960){ 
-            // this.explorer.destroy();
+            this.explorer.destroy();
             if(this.explorer.x <= 830 && this.explorer.x>= 560){
                 console.log("should be going");
                 game.settings = {
@@ -55,14 +55,14 @@ class Level1Square3 extends Phaser.Scene {
             // }
             
         }
-
-        if(this.explorer.x < 2 && this.explorer.y >= 61 && this.explorer.y <= 221){
+        if(this.game.settings.gameover == true && this.explorer.x < 2){
+            this.explorer.destroy();
                 game.settings = {
                     x: 959, 
                     y: this.explorer.y,
                     gameover: false,
                     screen: 14
-            }
+                }
             this.scene.start("Level1Square4");
         }
         this.explorer.update();

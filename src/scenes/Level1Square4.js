@@ -35,16 +35,16 @@ class Level1Square4 extends Phaser.Scene {
     update() {
         this.explorer.update();
 
-
-        if(this.explorer.x >980  && this.explorer.y >= 61 && this.explorer.y <= 211){
+        if(this.game.settings.gameover == true){
+            this.explorer.destroy();
             game.settings = {
                 x: 9, 
                 y: this.explorer.y,
                 gameover: false,
-                screen: 14
-        }
-        this.scene.start("Level1Square3");
-    }
+                screen: 13
+            }
+            this.scene.start("Level1Square3");
+         }
     }
 
 
