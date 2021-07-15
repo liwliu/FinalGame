@@ -23,6 +23,8 @@ class Level1Square1 extends Phaser.Scene {
         //assets
         this.checkpoint = this.add.tileSprite(127, 509, 64, 64, 'checkpoint').setOrigin(0,0);
         this.chest = this.add.tileSprite(112, 344, 32,32, 'chest').setOrigin(0,0);
+        //temp asset
+        this.meleeEnemy = this.add.tileSprite(232, 104, 32, 32, 'meleeEnemy').setOrigin(0,0);
 
         //checks if player already has key
         if(game.settings.key == true){
