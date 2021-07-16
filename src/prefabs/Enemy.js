@@ -3,16 +3,23 @@ class Enemy extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         this.isFiring = false;
+        this.angle = 0;
 
     }
 
     update() {
 
+        this.angle += 2;
+
         // check for collission if it spawns with the player in every level
         if(this.checkCollision(window.Level1Square1.explorer, this)){
             totalDeaths++
             console.log("total deaths: " + totalDeaths);
-        } 
+        }
+        
+        if (this.checkProximity(window.Level1Square1.explorer, this)){
+            this.shoot();
+        }
 
         // Close to enemy and then it shoots
 
@@ -25,7 +32,10 @@ class Enemy extends Phaser.GameObjects.Sprite {
         let totalY = player.y - enemy.y;
         let distance = Math.sqrt(totalX * totalX + totalY * totalY);
         if (distance <= 15){
-            this.shoot();
+            console.log("close");
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -35,6 +45,8 @@ class Enemy extends Phaser.GameObjects.Sprite {
 
         // move bullet towards player direction
         // only in direction of fired
+
+        // sue Math.angle
 
 
     }
