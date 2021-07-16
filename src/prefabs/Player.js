@@ -16,6 +16,12 @@ class Player extends Phaser.GameObjects.Sprite {
             if(game.settings.screen == 13 && this.y >= 87.25 && this.y <= 205.25 && game.settings.key == true){
                 game.settings.gameover = true; 
             }
+
+            //finish
+            //go to square 4 
+            if(game.settings.screen == 14 && this.y >= 705 && this.y <= 925 && window.Level1Square4.reddown && window.Level1Square4.bluedown){
+                game.settings.gameover = true; 
+            }
         }
         if(this.y < 5){
             this.y+=5;
