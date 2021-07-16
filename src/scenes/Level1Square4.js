@@ -14,7 +14,15 @@ class Level1Square4 extends Phaser.Scene {
         window.Level1Square4 = this;
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background4').setOrigin(0,0);
-        
+
+        //load in button
+        this.bluebutton = new BlueButton(this, 919, 770, 'blue', 0).setOrigin(0,0);
+        var bluedown = false;
+
+        this.redbutton = new RedButton(this, 64, 65, 'red', 0).setOrigin(0,0);
+        var reddown = false;
+
+        this.rock = new Rock(this, 234, 310, 'rock', 0).setOrigin(0,0);
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
@@ -36,6 +44,9 @@ class Level1Square4 extends Phaser.Scene {
 
     update() {
         this.explorer.update();
+        this.bluebutton.update();
+        this.redbutton.update();
+        this.rock.update();
 
         if(this.game.settings.gameover == true){
             this.explorer.destroy();

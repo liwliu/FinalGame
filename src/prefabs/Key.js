@@ -5,7 +5,6 @@ class Key extends Phaser.GameObjects.Sprite {
     }
 
     update() {
-        console.log("yoooo");
         if(game.settings.screen == 12){
             if(this.checkCollision(window.Level1Square2.explorer, this)){
                 game.settings.key = true;
