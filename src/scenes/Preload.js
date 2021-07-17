@@ -13,6 +13,9 @@ class Preload extends Phaser.Scene{
 
         // Level 1 Square 1
         this.load.image('background1', './assets/img/startingBackground.png');
+        this.load.image('topWall', './assets/img/square1TopWall.png');
+        this.load.image('botWall', './assets/img/square1BottomWall.png');        
+        this.load.image('rightWall', './assets/img/square1RightWall.png');
 
         // Level 1 Square 2
         this.load.image('background2', './assets/img/secondBackground.png');
