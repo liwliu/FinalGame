@@ -12,6 +12,17 @@ class Level1Square2 extends Phaser.Scene {
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background2').setOrigin(0,0);
 
+        //Walls
+        //Top
+        this.secondTopWall = this.add.tileSprite(0,0,576,64, 'topWall2').setOrigin(0,0);
+        //Bot
+        this.secondBotWall = this.add.tileSprite(40,934, 960, 64, 'botWall2').setOrigin(0,0);
+        //Left
+        this.secondLeftWall = this.add.tileSprite(1.25,365, 64, 640,'leftWall2').setOrigin(0,0);
+        //right
+        this.secondRightWall = this.add.tileSprite(934, 0, 64, 968, 'rightWall2').setOrigin(0,0);
+
+
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
