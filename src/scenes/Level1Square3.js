@@ -18,6 +18,18 @@ class Level1Square3 extends Phaser.Scene {
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
+        //Walls
+         //Top
+         this.thirdTopWall = this.add.tileSprite(0,0,960,64, 'topWall3').setOrigin(0,0);
+         //Bot
+         this.thirdBotWall = this.add.tileSprite(0,934, 576, 64, 'botWall3').setOrigin(0,0);
+         //Left
+         this.thirdLeftWall = this.add.tileSprite(1.25,240, 64, 704,'leftWall3').setOrigin(0,0);
+         //right
+         this.thirdRightWall = this.add.tileSprite(934, 0, 64, 1000, 'rightWall3').setOrigin(0,0);
+         //mid
+         this.thirdMidWall = this.add.tileSprite(545,130, 320, 320, 'midWall3').setOrigin(0,0); 
+
         //load in key
         if(game.settings.key == false){
         this.key = new Key(this, 39, 945, 'keysprite', 0).setOrigin(0,0);

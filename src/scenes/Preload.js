@@ -26,9 +26,21 @@ class Preload extends Phaser.Scene{
 
         // Level 1 Square 3
         this.load.image('background3', './assets/img/thirdBackground.png');
+        this.load.image('botWall3', './assets/img/thirdAreaWalls/thirdAreaWallBot.png');
+        this.load.image('topWall3', './assets/img/thirdAreaWalls/thirdAreaWallTop.png');
+        this.load.image('rightWall3', './assets/img/thirdAreaWalls/thirdAreaWallRight.png');
+        this.load.image('midWall3', './assets/img/thirdAreaWalls/thirdAreaWallMiddle.png');
+        this.load.image('leftWall3', './assets/img/thirdAreaWalls/thirdAreaWallLeft.png');
+        
 
         // Level 1 Square 4
         this.load.image('background4', './assets/img/fourthBackground.png');
+        this.load.image('botWall4', './assets/img/fourthAreaWalls/area4WallBot.png');
+        this.load.image('topWall4', './assets/img/fourthAreaWalls/area4WallsTop.png');
+        this.load.image('leftWall4', './assets/img/fourthAreaWalls/area4WallLeft.png');
+        this.load.image('rightWall4', './assets/img/fourthAreaWalls/area4WallsRight.png');
+        this.load.image('midWall4', './assets/img/fourthAreaWalls/area4WallMid.png');
+        this.load.image('sideMidWall4', './assets/img/fourthAreaWalls/area4WallsideMid.png');
 
         // Sprites
         this.load.image('playersprite', './assets/img/characterSpritesmall.png');

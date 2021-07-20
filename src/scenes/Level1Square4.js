@@ -15,13 +15,29 @@ class Level1Square4 extends Phaser.Scene {
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background4').setOrigin(0,0);
 
+        //Walls
+         //Top
+         this.fourthTopWall = this.add.tileSprite(0,0,1000,64, 'topWall4').setOrigin(0,0);
+         //Bot
+         this.fourthBotWall = this.add.tileSprite(240,934, 768, 64, 'botWall4').setOrigin(0,0);
+         //Left
+         this.fourthLeftWall = this.add.tileSprite(0,63, 64, 576,'leftWall4').setOrigin(0,0);
+         //right
+         this.fourthRightWall = this.add.tileSprite(969, 250, 32, 704, 'rightWall4').setOrigin(0,0);
+         //mid
+         this.fourthMidWall = this.add.tileSprite(545,0, 192, 510, 'midWall4').setOrigin(0,0); 
+         //sidemid
+         this.sideMidWall = this.add.tileSprite(779,600, 192, 128, 'sideMidWall4').setOrigin(0,0);
+
+
         //load in button
         this.bluebutton = new BlueButton(this, 919, 770, 'blue', 0).setOrigin(0,0);
         var bluedown = false;
 
         this.redbutton = new RedButton(this, 64, 65, 'red', 0).setOrigin(0,0);
         var reddown = false;
-
+        
+        this.rockEntrance = new Rock(this, 849, 360, 'rock', 0).setOrigin(0,0);
         this.rock = new Rock(this, 234, 310, 'rock', 0).setOrigin(0,0);
 
         //load in explorer
@@ -47,6 +63,7 @@ class Level1Square4 extends Phaser.Scene {
         this.bluebutton.update();
         this.redbutton.update();
         this.rock.update();
+        this.rockEntrance.update();
 
         if(this.game.settings.gameover == true){
             if(this.explorer.x < 2){
