@@ -4,25 +4,31 @@ class Enemy extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
         this.isFiring = false;
         this.angle = 0;
+        this.projectileGroup = new ProjectileGroup(this.scene);
+        this.seconds_passed = 0;
 
     }
 
     update() {
-
-        this.angle += 2;
-
         // check for collission if it spawns with the player in every level
-        if(this.checkCollision(window.Level1Square1.explorer, this)){
+        if(this.checkCollision(this.scene.explorer, this)){
             totalDeaths++
             console.log("total deaths: " + totalDeaths);
         }
         
-        if (this.checkProximity(window.Level1Square1.explorer, this)){
-            this.shoot();
+        if ((this.checkProximity(this.scene.explorer, this)) && (this.scene.clock.now % 3000 == 0)){
+           this.projectileGroup.fireProjectile(this.x, this.y, this.getSlope(this.scene.explorer, this));
+/*            this.createMultiple({
+                classType: Projectile,
+                frameQuantity: 30,
+                active: false,
+                visible: false,
+                key: 'projectile'
+            })*/
         }
-
-        // Close to enemy and then it shoots
-
+        /*this.clock = this.scene.time.delayedCall(1000, () => {
+            this.seconds_passed++;
+        }, null, this);*/
     }
 
     // 
@@ -31,24 +37,12 @@ class Enemy extends Phaser.GameObjects.Sprite {
         let totalX = player.x - enemy.x;
         let totalY = player.y - enemy.y;
         let distance = Math.sqrt(totalX * totalX + totalY * totalY);
-        if (distance <= 15){
+        if (distance <= 353){
             console.log("close");
             return true;
         } else {
             return false;
         }
-    }
-
-    // shoot towards the player
-    shoot() {
-        // spawn bullet
-
-        // move bullet towards player direction
-        // only in direction of fired
-
-        // sue Math.angle
-
-
     }
 
     checkCollision(player, enemy) {
@@ -61,5 +55,9 @@ class Enemy extends Phaser.GameObjects.Sprite {
             } else {
                 return false;
         }
+    }
+
+    getSlope(player, enemy){
+        return (enemy.y - player.y) / (enemy.x - player.x);
     }
 }

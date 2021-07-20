@@ -19,6 +19,13 @@ let config = {
     typer: Phaser.Auto,
     width: 500,
     height: 500,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false,
+            gravity: {y : 0}
+        }
+    },
     scene: [Preload, Menu, Level1Square1, Level1Square2, Level1Square3, Level1Square4, Level1End]
 }
 

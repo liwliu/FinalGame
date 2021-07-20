@@ -9,6 +9,7 @@ class Level1Square2 extends Phaser.Scene {
         //variable to make this square accessible by other objects
         window.Level1Square2 = this;
 
+        this.clock = new Clock(this);
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background2').setOrigin(0,0);
 

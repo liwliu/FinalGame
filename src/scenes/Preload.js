@@ -1,7 +1,5 @@
 /* Class: Preload.js
-
-This class is used for preloading all assets needed for the game to operate
-
+    This class is used for preloading all assets needed for the game to operate
 */
 
 class Preload extends Phaser.Scene{
@@ -48,7 +46,7 @@ class Preload extends Phaser.Scene{
         this.load.image('checkpoint', './assets/img/checkpoint.png');
         this.load.image('chest', './assets/img/treasureChest.png');
         this.load.image('meleeEnemy', './assets/img/satanCornChip.png');
-        this.load.image('enemyProjectile', './assets/img/enemyProjectile.png');
+        this.load.image('projectile', './assets/img/enemyProjectile.png');
         this.load.image('rock', './assets/img/rock.png');
         this.load.spritesheet('blue', './assets/img/pressButton.png', {frameWidth: 64, frameHeight: 64, startFrame:0, endFrame:1});
         this.load.spritesheet('red', './assets/img/holdButton.png', {frameWidth: 64, frameHeight: 64, startFrame:0, endFrame:1});
