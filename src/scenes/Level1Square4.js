@@ -37,11 +37,13 @@ class Level1Square4 extends Phaser.Scene {
         this.redbutton = new RedButton(this, 64, 65, 'red', 0).setOrigin(0,0);
         var reddown = false;
         
-        this.rockEntrance = new Rock(this, 849, 360, 'rock', 0).setOrigin(0,0);
-        this.rock = new Rock(this, 234, 310, 'rock', 0).setOrigin(0,0);
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
+        
+        //rock
+        this.rockEntrance = new Rock(this, 849, 360, 'rock', 0).setOrigin(0,0);
+        this.rock = new Rock(this, 234, 310, 'rock', 0).setOrigin(0,0);
 
         //camera
         this.cameras.main.setSize(500,500);

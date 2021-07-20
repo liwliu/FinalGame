@@ -30,9 +30,13 @@ class Level1Square3 extends Phaser.Scene {
          //mid
          this.thirdMidWall = this.add.tileSprite(545,130, 320, 320, 'midWall3').setOrigin(0,0); 
 
+        //load rock
+         this.rock3Entrance = new Rock(this, 706, 655, 'rock', 0).setOrigin(0,0);
+         this.rock3 = new Rock(this, 181, 795, 'rock', 0).setOrigin(0,0);
+
         //load in key
         if(game.settings.key == false){
-        this.key = new Key(this, 39, 945, 'keysprite', 0).setOrigin(0,0);
+        this.key = new Key(this, 876, 90, 'keysprite', 0).setOrigin(0,0);
         }
         else{
             this.key = new Key(this, 1300, 1300, 'keysprite', 0).setOrigin(0,0);
@@ -52,6 +56,12 @@ class Level1Square3 extends Phaser.Scene {
     }
 
     update() {
+        
+        this.explorer.update();
+        this.key.update();
+        this.rock3.update();
+        this.rock3Entrance.update();
+        
 
         if(this.game.settings.gameover == true && this.explorer.y > 960){ 
             this.explorer.destroy();
@@ -75,6 +85,8 @@ class Level1Square3 extends Phaser.Scene {
             // }
             
         }
+        
+
         if(this.game.settings.gameover == true && this.explorer.x < 2){
             this.explorer.destroy();
                 game.settings = {
@@ -86,8 +98,7 @@ class Level1Square3 extends Phaser.Scene {
                 }
             this.scene.start("Level1Square4");
         }
-        this.explorer.update();
-        this.key.update();
+        
         //this.checkcamera();
     }
     
