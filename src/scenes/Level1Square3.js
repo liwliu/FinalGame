@@ -30,6 +30,15 @@ class Level1Square3 extends Phaser.Scene {
          this.thirdRightWall = this.add.tileSprite(934, 0, 64, 1000, 'rightWall3').setOrigin(0,0);
          //mid
          this.thirdMidWall = this.add.tileSprite(545,130, 320, 320, 'midWall3').setOrigin(0,0); 
+         //Need to divide the middle wall up in order to maintain proper boundaries
+         //rightmid
+         this.thirdMidWallRight = this.add.tileSprite(800, 130, 64, 320, 'midRightWall3').setOrigin(0,0);
+         //leftmid
+         this.thirdMidWallLeft = this.add.tileSprite(545, 130, 64, 320, 'midLeftWall3').setOrigin(0,0);
+         //topmid
+         this.thirdMidWallTop = this.add.tileSprite(545, 125, 320, 64, 'midTopWall3').setOrigin(0,0);
+         //botmid
+         this.thirdMidWallBot = this.add.tileSprite(545, 390, 320, 64, 'midBotWall3').setOrigin(0,0);
 
         //load rock
          this.rock3Entrance = new Rock(this, 706, 655, 'rock', 0).setOrigin(0,0);
@@ -86,7 +95,33 @@ class Level1Square3 extends Phaser.Scene {
             // }
             
         }
-        
+
+        //WALL COLLISION CHECK
+        if(this.checkCollision(this.explorer, this.thirdBotWall)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdTopWall)){
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdRightWall)){
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdLeftWall)){
+            this.explorer.x +=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdMidWallRight)){
+            this.explorer.x +=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdMidWallLeft)){
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdMidWallTop)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.thirdMidWallBot)){
+            this.explorer.y +=5;
+        }
+
 
         if(this.game.settings.gameover == true && this.explorer.x < 2){
             this.explorer.destroy();
@@ -103,10 +138,15 @@ class Level1Square3 extends Phaser.Scene {
         //this.checkcamera();
     }
     
-    /*checkcamera(){
-        if(this.explorer.y < 250){
-            this.camera.y
-        }
-    }*/
+    checkCollision(explorer, wall) {
+        if (explorer.x < wall.x + wall.width &&
+            explorer.x + explorer.width > wall.x &&
+            explorer.y < wall.y + wall.height &&
+            explorer.height + explorer.y > wall.y) {
+                return true;
+            } else {
+                return false;
+            }
+    }
 
 }

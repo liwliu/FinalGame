@@ -73,6 +73,20 @@ class Level1Square2 extends Phaser.Scene {
             this.scene.start("Level1Square1");
         }
 
+         //WALL COLLISION CHECK
+         if(this.checkCollision(this.explorer, this.secondBotWall)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.secondTopWall)){
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.secondRightWall)){
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.secondLeftWall)){
+            this.explorer.x +=5;
+        }
+
         if(this.game.settings.gameover == true && this.explorer.y < 7){ 
             this.explorer.destroy();
             if(this.explorer.x >=650){
@@ -107,5 +121,15 @@ class Level1Square2 extends Phaser.Scene {
         this.explorer.update();
     }
 
+    checkCollision(explorer, wall) {
+        if (explorer.x < wall.x + wall.width &&
+            explorer.x + explorer.width > wall.x &&
+            explorer.y < wall.y + wall.height &&
+            explorer.height + explorer.y > wall.y) {
+                return true;
+            } else {
+                return false;
+            }
+    }
 
 }

@@ -86,7 +86,29 @@ class Level1Square4 extends Phaser.Scene {
                 this.scene.start("Level1Square3");
             }
         }
+        //WALL COLLISION CHECK
+        if(this.checkCollision(this.explorer, this.fourthBotWall)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.fourthTopWall)){
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.fourthRightWall)){
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.fourthLeftWall)){
+            this.explorer.x +=5;
+        }
     }
 
-
+    checkCollision(explorer, wall) {
+        if (explorer.x < wall.x + wall.width &&
+            explorer.x + explorer.width > wall.x &&
+            explorer.y < wall.y + wall.height &&
+            explorer.height + explorer.y > wall.y) {
+                return true;
+            } else {
+                return false;
+            }
+    }
 }
