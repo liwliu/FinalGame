@@ -44,6 +44,12 @@ class Preload extends Phaser.Scene{
         this.load.image('rightWall4', './assets/img/fourthAreaWalls/area4WallsRight.png');
         this.load.image('midWall4', './assets/img/fourthAreaWalls/area4WallMid.png');
         this.load.image('sideMidWall4', './assets/img/fourthAreaWalls/area4WallsideMid.png');
+        this.load.image('midLeftWall4', './assets/img/fourthAreaWalls/area4WallMidLeft.png');
+        this.load.image('midRightWall4', './assets/img/fourthAreaWalls/area4WallMidRight.png');
+        this.load.image('midBotWall4', './assets/img/fourthAreaWalls/area4WallMidBot.png');
+        this.load.image('sideMidTopWall4','./assets/img/fourthAreaWalls/area4WallsideMidTop.png');
+        this.load.image('sideMidLeftWall4','./assets/img/fourthAreaWalls/area4WallsideMidLeft.png');
+
 
         // Sprites
         this.load.image('playersprite', './assets/img/characterSpritesmall.png');

@@ -27,8 +27,20 @@ class Level1Square4 extends Phaser.Scene {
          this.fourthRightWall = this.add.tileSprite(969, 250, 32, 704, 'rightWall4').setOrigin(0,0);
          //mid
          this.fourthMidWall = this.add.tileSprite(545,0, 192, 510, 'midWall4').setOrigin(0,0); 
+         //midLeft
+         this.fourthMidLeftWall = this.add.tileSprite(545, 0, 64, 510, 'midLeftWall4').setOrigin(0,0);
+         //midRight
+         this.fourthMidRightWall = this.add.tileSprite(670, 0, 64, 510, 'midRightWall4').setOrigin(0,0);
+         //midBot
+         this.fourthMidBotWall = this.add.tileSprite(544, 448, 190, 64, 'midBotWall4').setOrigin(0,0);
          //sidemid
          this.sideMidWall = this.add.tileSprite(779,600, 192, 128, 'sideMidWall4').setOrigin(0,0);
+         //sidetop
+         this.sideMidTopWall = this.add.tileSprite(779,600, 192, 64, 'sideMidTopWall4').setOrigin(0,0);
+         //sidebot
+         this.sideMidBotWall = this.add.tileSprite(779, 664, 190, 64, 'midBotWall4').setOrigin(0,0);
+         //sideLeft
+         this.sideMidLeftWall = this.add.tileSprite(775, 600, 64, 128, 'sideMidLeftWall4').setOrigin(0,0);
 
 
         //load in button
@@ -99,7 +111,27 @@ class Level1Square4 extends Phaser.Scene {
         if(this.checkCollision(this.explorer, this.fourthLeftWall)){
             this.explorer.x +=5;
         }
+        if(this.checkCollision(this.explorer, this.fourthMidLeftWall)){
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.fourthMidRightWall)){
+            this.explorer.x +=5;
+        }
+        if(this.checkCollision(this.explorer, this.fourthMidBotWall)){
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.sideMidTopWall)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.sideMidBotWall)){
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.sideMidLeftWall)){
+            this.explorer.x -=5;
+        }
+
     }
+
 
     checkCollision(explorer, wall) {
         if (explorer.x < wall.x + wall.width &&

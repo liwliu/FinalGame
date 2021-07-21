@@ -15,9 +15,9 @@ class RedButton extends Phaser.GameObjects.Sprite {
     }
 
     checkCollision(explorer, button) {
-        if (explorer.x < button.x + 64 &&
+        if (explorer.x < button.x + 32 &&
             explorer.x + explorer.width > button.x &&
-            explorer.y < button.y + 32 &&
+            explorer.y < button.y + 16 &&
             explorer.height + explorer.y > button.y) {
                 return true;
             } else {
