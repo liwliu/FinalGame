@@ -10,7 +10,6 @@ class Level1Square1 extends Phaser.Scene {
         //variable to make this square accessible by other objects
         window.Level1Square1 = this;
 
-        this.clock = new Clock(this);
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background1').setOrigin(0,0);
         //load walls
@@ -45,7 +44,7 @@ class Level1Square1 extends Phaser.Scene {
 
         //temp asset
         this.Enemy1 = new Enemy(this, 232, 104, 'meleeEnemy', 0).setOrigin(0,0); //this.add.tileSprite(232, 104, 32, 32, 'meleeEnemy').setOrigin(0,0);
-        this.Enemy2 = new Enemy(this, 232, 104, 'meleeEnemy', 0).setOrigin(0,0); //this.add.tileSprite(232, 104, 32, 32, 'meleeEnemy').setOrigin(0,0);
+        //this.Enemy2 = new Enemy(this, 232, 104, 'meleeEnemy', 0).setOrigin(0,0); //this.add.tileSprite(232, 104, 32, 32, 'meleeEnemy').setOrigin(0,0);
 
         // fire laser
         //this.laser = new Projectile(this, 232, 104, 'enemyProjectile', 0).setOrigin(0,0);
@@ -62,6 +61,8 @@ class Level1Square1 extends Phaser.Scene {
         this.cameras.main.setBounds(0,0,1000, 1000);
         this.cameras.main.startFollow(this.explorer);
 
+        this.timer = 0;
+
         //set keyboard input
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -70,7 +71,12 @@ class Level1Square1 extends Phaser.Scene {
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
 
-    update() {
+    update(time, delta) {
+        this.timer += delta;
+        while (this.timer > 3000) {
+            this.Enemy1.beginShoot();
+            this.timer -= 3000;
+        }
         if(this.game.settings.gameover == true){ 
             this.explorer.destroy();
             game.settings = {

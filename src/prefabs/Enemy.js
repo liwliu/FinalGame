@@ -15,20 +15,13 @@ class Enemy extends Phaser.GameObjects.Sprite {
             totalDeaths++
             console.log("total deaths: " + totalDeaths);
         }
+    }
         
-        if ((this.checkProximity(this.scene.explorer, this)) && (this.scene.clock.now % 3000 == 0)){
+
+    beginShoot(){
+        if ((this.checkProximity(this.scene.explorer, this))){
            this.projectileGroup.fireProjectile(this.x, this.y, this.getSlope(this.scene.explorer, this));
-/*            this.createMultiple({
-                classType: Projectile,
-                frameQuantity: 30,
-                active: false,
-                visible: false,
-                key: 'projectile'
-            })*/
         }
-        /*this.clock = this.scene.time.delayedCall(1000, () => {
-            this.seconds_passed++;
-        }, null, this);*/
     }
 
     // 
@@ -38,7 +31,6 @@ class Enemy extends Phaser.GameObjects.Sprite {
         let totalY = player.y - enemy.y;
         let distance = Math.sqrt(totalX * totalX + totalY * totalY);
         if (distance <= 353){
-            console.log("close");
             return true;
         } else {
             return false;
