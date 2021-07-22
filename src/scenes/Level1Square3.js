@@ -174,6 +174,88 @@ class Level1Square3 extends Phaser.Scene {
             this.explorer.y -=5;
         }
 
+        if(this.checkCollision(this.rock3, this.thirdBotWall)){
+            this.rock3.y -=5;
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdTopWall)){
+            this.rock3.y +=5;
+            this.explorer.y += 5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdRightWall)){
+            this.rock3.x -=5;
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdLeftWall)){
+            this.rock3.x +=5;
+            this.explorer.x += 5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdMidWallRight)){
+            this.rock3.x +=5;
+            this.explorer.x += 5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdMidWallLeft)){
+            this.rock3.x -=5;
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdMidWallTop)){
+            this.rock3.y -=5;
+            this.explorer.y -= 5;
+        }
+        if(this.checkCollision(this.rock3, this.thirdMidWallBot)){
+            this.rock3.y +=5;
+            this.explorer.y += 5 ;
+        }
+        if(this.checkCollision(this.rock3, this.nextArea3)){
+            this.rock3.y +=5;
+            this.explorer.y += 5;
+        }
+        if(this.checkCollision(this.rock3, this.nextArea3Top)){
+            this.rock3.y -=5;
+            this.explorer.y -=5;
+        }
+
+        if(this.checkCollision(this.rock3Entrance, this.thirdBotWall)){
+            this.rock3Entrance.y -=5;
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdTopWall)){
+            this.rock3Entrance.y +=5;
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdRightWall)){
+            this.rock3Entrance.x -=5;
+            this.explorer.x -= 5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdLeftWall)){
+            this.rock3Entrance.x +=5;
+            this.explorer.x += 5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdMidWallRight)){
+            this.rock3Entrance.x +=5;
+            this.explorer.x += 5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdMidWallLeft)){
+            this.rock3Entrance.x -=5;
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdMidWallTop)){
+            this.rock3Entrance.y -=5;
+            this.explorer.y -= 5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.thirdMidWallBot)){
+            this.rock3Entrance.y +=5;
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.nextArea3)){
+            this.rock3Entrance.y +=5;
+            this.explorer.y += 5;
+        }
+        if(this.checkCollision(this.rock3Entrance, this.nextArea3Top)){
+            this.rock3Entrance.y -=5;
+            this.explorer.y -= 5;
+        }
+
 
         if(this.game.settings.gameover == true && this.explorer.x < 2){
             this.explorer.destroy();

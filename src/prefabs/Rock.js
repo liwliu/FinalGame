@@ -72,9 +72,9 @@ class Rock extends Phaser.GameObjects.Sprite {
     }
 
     checkCollision(explorer, button) {
-        if (explorer.x < button.x + 32 &&
+        if (explorer.x < button.x + button.width &&
             explorer.x + explorer.width > button.x &&
-            explorer.y < button.y + 32 &&
+            explorer.y < button.y + button.height &&
             explorer.height + explorer.y > button.y) {
                 return true;
             } else {

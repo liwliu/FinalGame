@@ -56,6 +56,12 @@ class Level1Square4 extends Phaser.Scene {
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
         
+        //load enemies
+        this.Enemy1 = new Enemy(this, 729, 900, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy2 = new Enemy(this, Math.random() * (509 - 59) + 59, Math.random() * (900 - 535) + 535, 'meleeEnemy', 0).setOrigin(0,0);   
+        this.Enemy3 = new Enemy(this, Math.random() * (509 - 59) + 59, Math.random() * (900 - 535) + 535, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy4 = new Enemy(this, Math.random() * (489 - 254) + 254, Math.random() * (455 - 60) + 60, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy5 = new Enemy(this, Math.random() * (489 - 254) + 254, Math.random() * (455 - 60) + 60, 'meleeEnemy', 0).setOrigin(0,0); 
         //area torch
         this.nextArea4 = this.add.tileSprite(0, 880, 40, 56, 'nextAreaNoFire').setOrigin(0,0);
         this.nextArea4Top = this.add.tileSprite(0, 645, 40, 56, 'nextAreaNoFire').setOrigin(0,0); 
@@ -64,6 +70,9 @@ class Level1Square4 extends Phaser.Scene {
         this.rockEntrance = new Rock(this, 849, 360, 'rock', 0).setOrigin(0,0);
         this.rock = new Rock(this, 234, 310, 'rock', 0).setOrigin(0,0);
 
+        //timers
+        this.horizontaltimer = 0;
+        this.timer = 0;
         //camera
         this.cameras.main.setSize(500,500);
         this.cameras.main.setBounds(0,0,1000, 1000);
@@ -79,12 +88,45 @@ class Level1Square4 extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
 
-    update() {
+    update(time, delta) {
         this.explorer.update();
         this.bluebutton.update();
         this.redbutton.update();
         this.rock.update();
         this.rockEntrance.update();
+        this.Enemy1.update();
+        this.Enemy2.update();
+        this.Enemy3.update();
+        this.Enemy4.update();
+        this.Enemy5.update();
+
+        this.horizontaltimer += delta;
+        this.timer += delta;
+        
+        while (this.horizontaltimer > 100) {
+            this.Enemy1.beginShoot();
+            this.horizontaltimer -= 100;
+        }
+        while (this.timer > 1000) {
+            this.Enemy2.beginShoot();
+            this.Enemy3.beginShoot();
+            this.Enemy4.beginShoot();
+            this.Enemy5.beginShoot();
+            this.timer -= 1000;
+        }
+
+        if(game.settings.hit){
+            this.explorer.destroy();
+                game.settings = {
+                    x: 959, 
+                    y: 125,
+                    gameover: false,
+                    screen: 14,
+                    key: false,
+                    hit: false
+                }
+            this.scene.restart();
+        }
 
         if(this.game.settings.gameover == true){
             if(this.explorer.x < 2){
@@ -141,7 +183,104 @@ class Level1Square4 extends Phaser.Scene {
         if(this.checkCollision(this.explorer, this.nextArea4Top)){
             this.explorer.y +=5;
         }
+
+        if(this.checkCollision(this.rock, this.fourthBotWall)){
+            this.explorer.y -=5;
+            this.rock.y -=5;
+        }
+        if(this.checkCollision(this.rock, this.fourthTopWall)){
+            this.explorer.y +=5;
+            this.rock.y +=5;
+        }
+        if(this.checkCollision(this.rock, this.fourthRightWall)){
+            this.rock.x -=5;
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.rock, this.fourthLeftWall)){
+            this.explorer.x +=5;
+            this.rock.x += 5;
+        }
+        if(this.checkCollision(this.rock, this.fourthMidLeftWall)){
+            this.explorer.x -=5;
+            this.rock.x -=5;
+        }
+        if(this.checkCollision(this.rock, this.fourthMidRightWall)){
+            this.explorer.x +=5;
+            this.rock.x +=5;
+        }
+        if(this.checkCollision(this.rock, this.fourthMidBotWall)){
+            this.explorer.y +=5;
+            this.rock.y +=5;
+        }
+        if(this.checkCollision(this.rock, this.sideMidTopWall)){
+            this.explorer.y -=5;
+            this.rock.y -=5;
+        }
+        if(this.checkCollision(this.rock, this.sideMidBotWall)){
+            this.explorer.y +=5;
+            this.rock.y +=5;
+        }
+        if(this.checkCollision(this.rock, this.sideMidLeftWall)){
+            this.explorer.x -=5;
+            this.rock.x -=5;
+        }
+        if(this.checkCollision(this.rock, this.nextArea4)){
+            this.explorer.y -=5;
+            this.rock.y -=5;
+        }
+        if(this.checkCollision(this.rock, this.nextArea4Top)){
+            this.explorer.y +=5;
+            this.rock.y +=5;
+        }
         
+        if(this.checkCollision(this.rockEntrance, this.fourthBotWall)){
+            this.explorer.y -=5;
+            this.rockEntrance.y -=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.fourthTopWall)){
+            this.explorer.y +=5;
+            this.rockEntrance.y +=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.fourthRightWall)){
+            this.rockEntrance.x -=5;
+            this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.fourthLeftWall)){
+            this.explorer.x +=5;
+            this.rockEntrance.x += 5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.fourthMidLeftWall)){
+            this.explorer.x -=5;
+            this.rockEntrance.x -=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.fourthMidRightWall)){
+            this.explorer.x +=5;
+            this.rockEntrance.x +=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.fourthMidBotWall)){
+            this.explorer.y +=5;
+            this.rockEntrance.y +=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.sideMidTopWall)){
+            this.explorer.y -=5;
+            this.rockEntrance.y -=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.sideMidBotWall)){
+            this.explorer.y +=5;
+            this.rockEntrance.y +=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.sideMidLeftWall)){
+            this.explorer.x -=5;
+            this.rockEntrance.x -=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.nextArea4)){
+            this.explorer.y -=5;
+            this.rockEntrance.y -=5;
+        }
+        if(this.checkCollision(this.rockEntrance, this.nextArea4Top)){
+            this.explorer.y +=5;
+            this.rockEntrance.y +=5;
+        }
         //change torch to on
         if(game.settings.key){
             this.nextArea4.setTexture('nextAreaFire');

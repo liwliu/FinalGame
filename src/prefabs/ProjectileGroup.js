@@ -13,10 +13,10 @@ class ProjectileGroup extends Phaser.Physics.Arcade.Group {
         
     }
 
-    fireProjectile(x, y, slope, horizontal) {
+    fireProjectile(x, y, slope) {
         const projectile = this.getFirstDead(false);
         if (projectile) {
-                projectile.shoot(x, y, slope, horizontal);
+                projectile.shoot(x, y, slope);
         }
     }
 }

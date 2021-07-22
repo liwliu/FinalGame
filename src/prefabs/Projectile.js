@@ -12,6 +12,10 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
         if(game.settings.screen == 13 && ((x == 501 && y == 490) || (x == 387 && y == 110))){
             this.setVelocityX(300)
         }
+        else if(game.settings.screen == 14 && ((x == 729 && y == 900))){
+            this.setAngle(90);
+            this.setVelocityY(-300)
+        }
         else{
             this.setAngle(Math.atan(slope) * 57.2958);
             if(slope >= 0){
@@ -64,6 +68,12 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
         }
         if(game.settings.screen == 13){
             if(this.checkCollision(this.scene.rock3, this) || this.checkCollision(this.scene.rock3Entrance, this)){
+            this.setActive(false);
+            this.setVisible(false);
+            }
+        }
+        if(game.settings.screen == 14){
+            if(this.checkCollision(this.scene.rock, this) || this.checkCollision(this.scene.rockEntrance, this)){
             this.setActive(false);
             this.setVisible(false);
             }
