@@ -20,19 +20,22 @@ class Level1Square4 extends Phaser.Scene {
          //Top
          this.fourthTopWall = this.add.tileSprite(0,0,1000,64, 'topWall4').setOrigin(0,0);
          //Bot
-         this.fourthBotWall = this.add.tileSprite(240,934, 768, 64, 'botWall4').setOrigin(0,0);
+         this.fourthBotWall = this.add.tileSprite(0,934, 1000, 64, 'botWall4').setOrigin(0,0);
          //Left
          this.fourthLeftWall = this.add.tileSprite(0,63, 64, 576,'leftWall4').setOrigin(0,0);
          //right
-         this.fourthRightWall = this.add.tileSprite(969, 250, 32, 704, 'rightWall4').setOrigin(0,0);
+         this.fourthRightWall = this.add.tileSprite(968, 250, 32, 704, 'rightWall4').setOrigin(0,0);
+
          //mid
-         this.fourthMidWall = this.add.tileSprite(545,0, 192, 510, 'midWall4').setOrigin(0,0); 
+         this.fourthMidWall = this.add.tileSprite(520,0, 192, 510, 'midWall4').setOrigin(0,0); 
          //midLeft
-         this.fourthMidLeftWall = this.add.tileSprite(545, 0, 64, 510, 'midLeftWall4').setOrigin(0,0);
+         this.fourthMidLeftWall = this.add.tileSprite(520, 0, 64, 510, 'midLeftWall4').setOrigin(0,0);
          //midRight
-         this.fourthMidRightWall = this.add.tileSprite(670, 0, 64, 510, 'midRightWall4').setOrigin(0,0);
+         this.fourthMidRightWall = this.add.tileSprite(645, 0, 64, 510, 'midRightWall4').setOrigin(0,0);
          //midBot
-         this.fourthMidBotWall = this.add.tileSprite(544, 448, 190, 64, 'midBotWall4').setOrigin(0,0);
+         this.fourthMidBotWall = this.add.tileSprite(519, 448, 190, 64, 'midBotWall4').setOrigin(0,0);
+         
+         
          //sidemid
          this.sideMidWall = this.add.tileSprite(779,600, 192, 128, 'sideMidWall4').setOrigin(0,0);
          //sidetop
@@ -44,16 +47,20 @@ class Level1Square4 extends Phaser.Scene {
 
 
         //load in button
-        this.bluebutton = new BlueButton(this, 919, 770, 'blue', 0).setOrigin(0,0);
+        this.bluebutton = new BlueButton(this, 910, 770, 'blue', 0).setOrigin(0,0);
         var bluedown = false;
 
-        this.redbutton = new RedButton(this, 64, 65, 'red', 0).setOrigin(0,0);
+        this.redbutton = new RedButton(this, 64, 60, 'red', 0).setOrigin(0,0);
         var reddown = false;
         
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
         
+        //area torch
+        this.nextArea4 = this.add.tileSprite(0, 880, 40, 56, 'nextArea').setOrigin(0,0);
+        this.nextArea4Top = this.add.tileSprite(0, 645, 40, 56, 'nextArea').setOrigin(0,0); 
+
         //rock
         this.rockEntrance = new Rock(this, 849, 360, 'rock', 0).setOrigin(0,0);
         this.rock = new Rock(this, 234, 310, 'rock', 0).setOrigin(0,0);
@@ -128,6 +135,12 @@ class Level1Square4 extends Phaser.Scene {
         }
         if(this.checkCollision(this.explorer, this.sideMidLeftWall)){
             this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea4)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea4Top)){
+            this.explorer.y +=5;
         }
 
     }

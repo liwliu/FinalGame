@@ -44,6 +44,10 @@ class Level1Square3 extends Phaser.Scene {
          this.rock3Entrance = new Rock(this, 706, 655, 'rock', 0).setOrigin(0,0);
          this.rock3 = new Rock(this, 181, 795, 'rock', 0).setOrigin(0,0);
 
+        //area torch
+         this.nextArea3 = this.add.tileSprite(0, 30, 40, 56, 'nextArea').setOrigin(0,0);
+         this.nextArea3Top = this.add.tileSprite(0, 185, 40, 56, 'nextArea').setOrigin(0,0); 
+
         //load in key
         if(game.settings.key == false){
         this.key = new Key(this, 876, 90, 'keysprite', 0).setOrigin(0,0);
@@ -120,6 +124,12 @@ class Level1Square3 extends Phaser.Scene {
         }
         if(this.checkCollision(this.explorer, this.thirdMidWallBot)){
             this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea3)){
+            this.explorer.y +=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea3Top)){
+            this.explorer.y -=5;
         }
 
 
