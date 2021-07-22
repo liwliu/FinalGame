@@ -19,13 +19,17 @@ class Level1Square2 extends Phaser.Scene {
         //Bot
         this.secondBotWall = this.add.tileSprite(40,934, 960, 64, 'botWall2').setOrigin(0,0);
         //Left
-        this.secondLeftWall = this.add.tileSprite(1.25,365, 64, 640,'leftWall2').setOrigin(0,0);
+        this.secondLeftWall = this.add.tileSprite(0,225, 64, 768,'leftWall2').setOrigin(0,0);
         //right
         this.secondRightWall = this.add.tileSprite(934, 0, 64, 968, 'rightWall2').setOrigin(0,0);
 
 
         //load in explorer
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
+
+        //next area totems
+        this.nextArea2 = this.add.tileSprite(570, 5, 40, 56, 'nextArea').setOrigin(0,0);
+        this.nextArea2Top = this.add.tileSprite(821, 5, 40, 56, 'nextArea').setOrigin(0,0);
 
         //load in key
         if(game.settings.key == false){
@@ -85,6 +89,12 @@ class Level1Square2 extends Phaser.Scene {
         }
         if(this.checkCollision(this.explorer, this.secondLeftWall)){
             this.explorer.x +=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea2)){
+            this.explorer.x +=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea2Top)){
+            this.explorer.x -=5;
         }
 
         if(this.game.settings.gameover == true && this.explorer.y < 7){ 

@@ -3,11 +3,6 @@ class Level1Square1 extends Phaser.Scene {
         super("Level1Square1");
     }
 
-    // preload() {
-    //     //assets
-    //     this.load.image('background1', './assets/img/startingBackground.png');
-    //     this.load.image('playersprite', './assets/img/characterSpritesmall.png');
-    // }
 
     create() {
 
@@ -19,12 +14,15 @@ class Level1Square1 extends Phaser.Scene {
         //load in background
         this.Background = this.add.tileSprite(0,0, 1000, 1000, 'background1').setOrigin(0,0);
         //load walls
+        //ocean
+        this.OceanWall = this.add.tileSprite(0,0, 64, 1000, 'ocean').setOrigin(0,0);
         //top wall
-        this.TopWall = this.add.tileSprite(0,0,576,64, 'topWall').setOrigin(0,0);
+        this.TopWall = this.add.tileSprite(0,0,1000,64, 'topWall').setOrigin(0,0);
         //bottom wall
         this.BotWall = this.add.tileSprite(2,934, 960, 64, 'botWall').setOrigin(0,0);
         //right wall
-        this.RightWall = this.add.tileSprite(936,360, 64, 640,'rightWall').setOrigin(0,0);
+        this.RightWall = this.add.tileSprite(936,225, 64, 768,'rightWall').setOrigin(0,0);
+        
         
 
         //load in explorer
@@ -32,7 +30,15 @@ class Level1Square1 extends Phaser.Scene {
 
         //assets
         this.checkpoint = this.add.tileSprite(127, 509, 64, 64, 'checkpoint').setOrigin(0,0);
-        this.chest = this.add.tileSprite(112, 344, 32,32, 'chest').setOrigin(0,0);
+        this.nextArea = this.add.tileSprite(960, 170, 40, 56, 'nextArea').setOrigin(0,0);
+        this.nextAreaTop = this.add.tileSprite(960, 30, 40, 56, 'nextArea').setOrigin(0,0);
+
+
+        this.wKey = this.add.tileSprite(252, 535, 32, 32, 'wKey').setOrigin(0,0);
+        this.sKey = this.add.tileSprite(252, 570, 32, 32, 'sKey').setOrigin(0,0);
+        this.aKey = this.add.tileSprite(215, 570, 32, 32, 'aKey').setOrigin(0,0);
+        this.dKey = this.add.tileSprite(289, 570, 32, 32, 'dKey').setOrigin(0,0);
+        
 
         // firing lasers
         // this.projectileGroup = new ProjectileGroup(this);
@@ -85,6 +91,15 @@ class Level1Square1 extends Phaser.Scene {
         }
         if(this.checkCollision(this.explorer, this.RightWall)){
             this.explorer.x -=5;
+        }
+        if(this.checkCollision(this.explorer, this.OceanWall)){
+            this.explorer.x +=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextArea)){
+            this.explorer.y -=5;
+        }
+        if(this.checkCollision(this.explorer, this.nextAreaTop)){
+            this.explorer.y +=5;
         }
 
         //if (Phaser.Input.isDown())
