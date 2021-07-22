@@ -132,7 +132,7 @@ class Level1Square4 extends Phaser.Scene {
         }
 
         if(this.game.settings.gameover == true){
-            if(this.explorer.x < 2){
+            if(this.explorer.x < 20){
                 this.explorer.destroy();
                 this.scene.start("Level1End");
             }
