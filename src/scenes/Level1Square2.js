@@ -1,11 +1,16 @@
 class Level1Square2 extends Phaser.Scene {
     constructor() {
         super("Level1Square2");
+
+
+        
     }
 
     // ad
 
     create() {
+        
+
         //variable to make this square accessible by other objects
         window.Level1Square2 = this;
 
@@ -28,8 +33,8 @@ class Level1Square2 extends Phaser.Scene {
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
 
         //next area totems
-        this.nextArea2 = this.add.tileSprite(570, 5, 40, 56, 'nextArea').setOrigin(0,0);
-        this.nextArea2Top = this.add.tileSprite(821, 5, 40, 56, 'nextArea').setOrigin(0,0);
+        this.nextArea2 = this.add.tileSprite(570, 5, 40, 56, 'nextAreaNoFire').setOrigin(0,0);
+        this.nextArea2Top = this.add.tileSprite(821, 5, 40, 56, 'nextAreaNoFire').setOrigin(0,0);
 
         //load in key
         if(game.settings.key == false){
@@ -117,17 +122,13 @@ class Level1Square2 extends Phaser.Scene {
                      key: false
                  }
              }
-            // else{
-            //     game.settings = {
-            //         x: 326.75,
-            //         y: 961,
-            //         gameover: false,
-            //         screen: 13
-            //     }
-            // }
-           
                 this.scene.start("Level1Square3");
         }
+        if(game.settings.key){
+            this.nextArea2.setTexture('nextAreaFire');
+            this.nextArea2Top.setTexture('nextAreaFire');
+        }
+        
         this.explorer.update();
     }
 

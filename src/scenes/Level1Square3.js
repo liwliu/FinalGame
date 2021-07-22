@@ -45,8 +45,8 @@ class Level1Square3 extends Phaser.Scene {
          this.rock3 = new Rock(this, 181, 795, 'rock', 0).setOrigin(0,0);
 
         //area torch
-         this.nextArea3 = this.add.tileSprite(0, 30, 40, 56, 'nextArea').setOrigin(0,0);
-         this.nextArea3Top = this.add.tileSprite(0, 185, 40, 56, 'nextArea').setOrigin(0,0); 
+         this.nextArea3 = this.add.tileSprite(0, 30, 40, 56, 'nextAreaNoFire').setOrigin(0,0);
+         this.nextArea3Top = this.add.tileSprite(0, 185, 40, 56, 'nextAreaNoFire').setOrigin(0,0); 
 
         //load in key
         if(game.settings.key == false){
@@ -143,6 +143,11 @@ class Level1Square3 extends Phaser.Scene {
                     key: false
                 }
             this.scene.start("Level1Square4");
+        }
+        
+        if(game.settings.key){
+            this.nextArea3.setTexture('nextAreaFire');
+            this.nextArea3Top.setTexture('nextAreaFire');
         }
         
         //this.checkcamera();

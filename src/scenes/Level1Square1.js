@@ -30,8 +30,8 @@ class Level1Square1 extends Phaser.Scene {
 
         //assets
         this.checkpoint = this.add.tileSprite(127, 509, 64, 64, 'checkpoint').setOrigin(0,0);
-        this.nextArea = this.add.tileSprite(960, 170, 40, 56, 'nextArea').setOrigin(0,0);
-        this.nextAreaTop = this.add.tileSprite(960, 30, 40, 56, 'nextArea').setOrigin(0,0);
+        this.nextArea = this.add.tileSprite(960, 170, 40, 56, 'nextAreaFire').setOrigin(0,0);
+        this.nextAreaTop = this.add.tileSprite(960, 30, 40, 56, 'nextAreaFire').setOrigin(0,0);
 
 
         this.wKey = this.add.tileSprite(252, 535, 32, 32, 'wKey').setOrigin(0,0);

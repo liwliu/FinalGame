@@ -8,6 +8,11 @@ class Preload extends Phaser.Scene{
     }
 
     preload() {
+        //audio
+        this.load.audio('sfx_locked', './assets/audio/locked.wav');
+        this.load.audio('sfx_pickup', './assets/audio/pickup.wav');
+        this.load.audio('sfx_stopped', './assets/audio/stopped.wav');
+        this.load.audio('sfx_unlocked', './assets/audio/unlocked.wav');
 
         // Level 1 Square 1
         this.load.image('background1', './assets/img/startingBackground.png');
@@ -64,7 +69,8 @@ class Preload extends Phaser.Scene{
         this.load.image('meleeEnemy', './assets/img/satanCornChip.png');
         this.load.spritesheet('projectile', './assets/img/enemyProjectile.png', {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 4});
         this.load.image('rock', './assets/img/rock.png');
-        this.load.image('nextArea', './assets/img/nextArea.png');
+        this.load.image('nextAreaFire', './assets/img/nextArea.png');
+        this.load.image('nextAreaNoFire', './assets/img/nextAreaNoFire.png');
         this.load.spritesheet('blue', './assets/img/pressButton.png', {frameWidth: 64, frameHeight: 64, startFrame:0, endFrame:1});
         this.load.spritesheet('red', './assets/img/holdButton.png', {frameWidth: 64, frameHeight: 64, startFrame:0, endFrame:1});
     }
