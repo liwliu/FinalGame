@@ -12,8 +12,7 @@ class Enemy extends Phaser.GameObjects.Sprite {
     update() {
         // check for collission if it spawns with the player in every level
         if(this.checkCollision(this.scene.explorer, this)){
-            totalDeaths++
-            console.log("total deaths: " + totalDeaths);
+            game.settings.hit = true;
         }
     }
         
@@ -39,10 +38,9 @@ class Enemy extends Phaser.GameObjects.Sprite {
 
     checkCollision(player, enemy) {
         if (player.x < enemy.x + enemy.width &&
-            player.x + enemy.width > player.x &&
+            player.x + player.width > enemy.x &&
             player.y < enemy.y + enemy.height &&
             player.height + player.y > enemy.y) {
-                console.log("death");
                 return true;
             } else {
                 return false;

@@ -28,7 +28,8 @@ class Menu extends Phaser.Scene {
             y: 559,
             gameover: false,
             screen: 11,
-            key: false
+            key: false,
+            hit: false
           }
           this.scene.start("Level1Square1");    
         }

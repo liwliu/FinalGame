@@ -42,11 +42,17 @@ class Level1Square1 extends Phaser.Scene {
         // firing lasers
         // this.projectileGroup = new ProjectileGroup(this);
 
-        //temp asset
-        this.Enemy1 = new Enemy(this, 232, 104, 'meleeEnemy', 0).setOrigin(0,0); //this.add.tileSprite(232, 104, 32, 32, 'meleeEnemy').setOrigin(0,0);
-        //this.Enemy2 = new Enemy(this, 232, 104, 'meleeEnemy', 0).setOrigin(0,0); //this.add.tileSprite(232, 104, 32, 32, 'meleeEnemy').setOrigin(0,0);
-
-        // fire laser
+        //Enemies
+        this.Enemy1 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy2 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
+        this.Enemy3 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy4 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy5 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy6 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0); 
+        this.Enemy7 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
+        this.Enemy8 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
+        this.Enemy9 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
+        this.Enemy10 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
         //this.laser = new Projectile(this, 232, 104, 'enemyProjectile', 0).setOrigin(0,0);
 
         //checks if player already has key
@@ -61,7 +67,9 @@ class Level1Square1 extends Phaser.Scene {
         this.cameras.main.setBounds(0,0,1000, 1000);
         this.cameras.main.startFollow(this.explorer);
 
-        this.timer = 0;
+        this.timer1 = 0;
+        this.timer2 = 0;
+        this.timer3 = 0;
 
         //set keyboard input
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -72,10 +80,27 @@ class Level1Square1 extends Phaser.Scene {
     }
 
     update(time, delta) {
-        this.timer += delta;
-        while (this.timer > 3000) {
+        this.timer1 += delta;
+        this.timer2 += delta;
+        this.timer3 += delta;
+        while (this.timer1 > 1000) {
             this.Enemy1.beginShoot();
-            this.timer -= 3000;
+            this.Enemy2.beginShoot();
+            this.Enemy3.beginShoot();
+            this.timer1 -= 1000;
+        }
+        while (this.timer2 > 2000) {
+            this.Enemy4.beginShoot();
+            this.Enemy5.beginShoot();
+            this.Enemy6.beginShoot();
+            this.timer2 -= 2000;
+        }
+        while (this.timer3 > 3000) {
+            this.Enemy7.beginShoot();
+            this.Enemy8.beginShoot();
+            this.Enemy9.beginShoot();
+            this.Enemy10.beginShoot();
+            this.timer3 -= 3000;
         }
         if(this.game.settings.gameover == true){ 
             this.explorer.destroy();
@@ -87,6 +112,18 @@ class Level1Square1 extends Phaser.Scene {
                 key: this.haskey 
             }
             this.scene.start("Level1Square2");
+        }
+        if(this.game.settings.hit == true){
+            this.explorer.destroy();
+            game.settings = {
+                x: 142,
+                y: 559,
+                gameover: false,
+                screen: 11,
+                key: false,
+                hit: false
+            }
+            this.scene.restart();
         }
         //COLLISION WITH WALLS CHECK
         if(this.checkCollision(this.explorer, this.BotWall)){
@@ -111,7 +148,15 @@ class Level1Square1 extends Phaser.Scene {
         //if (Phaser.Input.isDown())
         this.explorer.update();
         this.Enemy1.update();
-        this.Enemy1.update();
+        this.Enemy2.update();
+        this.Enemy3.update();
+        this.Enemy4.update();
+        this.Enemy5.update();
+        this.Enemy6.update();
+        this.Enemy7.update();
+        this.Enemy8.update();
+        this.Enemy9.update();
+        this.Enemy10.update();
     }
 
     checkCollision(explorer, wall) {

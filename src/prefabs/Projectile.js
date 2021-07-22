@@ -5,34 +5,62 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
 
     shoot(x, y, slope) {
         this.body.reset(x, y);
-            //this.scene.clock = this.scene.time.delayedCall(3000 , () => {
         this.setAngle(Math.atan(slope) * 57.2958);
         this.setActive(true);
         this.setVisible(true);
 
-        if(this.scene.explorer.x > x){
-            this.setVelocityY(100 * slope);
-            this.setVelocityX(100);
+        if(slope >= 0){
+            this.xvel = (300/(1 + slope));
+            this.yvel = ((300*slope)/(slope+1));
         }
         else{
-            this.setVelocityY(-100 * slope);
-            this.setVelocityX(-100);
+            if(this.scene.explorer.x > x && this.scene.explorer.y <= y){
+                this.xvel = (300/(1 + -slope));
+                this.yvel = -((300*-slope)/(-slope+1));
+            }
+            else{
+                this.xvel = -(300/(1 + -slope));
+                this.yvel = ((300*-slope)/(-slope+1));
+            }
         }
-            //}, null, this);
+        //Q1
+        if(this.scene.explorer.x > x && this.scene.explorer.y <= y){
+                this.setVelocityX(this.xvel);
+                this.setVelocityY(this.yvel);
+        }
+        //Q2
+        else if(this.scene.explorer.x <= x && this.scene.explorer.y <= y){
+                this.setVelocityX(-this.xvel);
+                this.setVelocityY(-this.yvel);
+        }
+        //Q
+        else if(this.scene.explorer.x <= x && this.scene.explorer.y > y){
+                this.setVelocityX(this.xvel);
+                this.setVelocityY(this.yvel);
+        }
+        //Q4
+        else if(this.scene.explorer.x > x && this.scene.explorer.y > y){
+                this.setVelocityX(this.xvel);
+                this.setVelocityY(this.yvel);
+        }
+        console.log(" xv: " + this.xvel + " yv " + this.yvel + " slope: " + slope);
     }
 
     preUpdate(time, delta){
         super.preUpdate(time, delta);
 
-        if(this.y <= 0 || this.x <= 0 || this.y >= 500 || this.x >= 500){
+        if(this.y <= 0 || this.x <= 0 || this.y >= 1000 || this.x >= 1000){
             this.setActive(false);
             this.setVisible(false);
+        }
+        if(this.checkCollision(this.scene.explorer, this)){
+            game.settings.hit = true;
         }
     }
 
     checkCollision(player, laser) {
         if (player.x < laser.x + laser.width &&
-            player.x + laser.width > player.x &&
+            player.x + player.width > laser.x &&
             player.y < laser.y + laser.height &&
             player.height + player.y > laser.y) {
                 console.log("hit");
