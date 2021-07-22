@@ -8,9 +8,12 @@ class Menu extends Phaser.Scene {
         //menu UI
         this.load.spritesheet('ship', './assets/img/Shipforsomething.png',{frameWidth: 500, frameHeight: 500, startFrame:0, endFrame:5});
         this.load.image('text', './assets/img/menuUI.png');
+        this.load.audio('menuMusic', './assets/audio/SolveThePuzzle.wav')
     }
 
     create() {
+        this.menuMusic = this.sound.add('menuMusic', {volume: 0.25});
+        this.menuMusic.play({loop: true});
         //menu UI
         this.textUI = this.add.tileSprite(0,0, 500, 500, 'text').setOrigin(0,0);
         this.anims.create({key:'sailBoat', frames: this.anims.generateFrameNumbers('ship', {start:0, end:5, first:0}), frameRate:3, repeat:-1});        

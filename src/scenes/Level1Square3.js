@@ -10,6 +10,8 @@ class Level1Square3 extends Phaser.Scene {
     // }
 
     create() {
+
+        this.sfxStopped = this.sound.add('sfx_stopped');
         //variable to make this square accessible by other objects
         window.Level1Square3 = this;
         //load in background
@@ -107,6 +109,7 @@ class Level1Square3 extends Phaser.Scene {
         }
 
         if(this.game.settings.hit){
+            this.sfxStopped.play();
             game.settings= {
                 x: 750,
                 y: 955,
