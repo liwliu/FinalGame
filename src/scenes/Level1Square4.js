@@ -57,8 +57,8 @@ class Level1Square4 extends Phaser.Scene {
         this.explorer = new Player(this, game.settings.x, game.settings.y, 'playersprite', 0).setOrigin(0,0);
         
         //area torch
-        this.nextArea4 = this.add.tileSprite(0, 880, 40, 56, 'nextArea').setOrigin(0,0);
-        this.nextArea4Top = this.add.tileSprite(0, 645, 40, 56, 'nextArea').setOrigin(0,0); 
+        this.nextArea4 = this.add.tileSprite(0, 880, 40, 56, 'nextAreaNoFire').setOrigin(0,0);
+        this.nextArea4Top = this.add.tileSprite(0, 645, 40, 56, 'nextAreaNoFire').setOrigin(0,0); 
 
         //rock
         this.rockEntrance = new Rock(this, 849, 360, 'rock', 0).setOrigin(0,0);
@@ -140,6 +140,12 @@ class Level1Square4 extends Phaser.Scene {
         }
         if(this.checkCollision(this.explorer, this.nextArea4Top)){
             this.explorer.y +=5;
+        }
+        
+        //change torch to on
+        if(game.settings.key){
+            this.nextArea4.setTexture('nextAreaFire');
+            this.nextArea4Top.setTexture('nextAreaFire');
         }
 
     }
