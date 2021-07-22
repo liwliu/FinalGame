@@ -4,7 +4,7 @@ class ProjectileGroup extends Phaser.Physics.Arcade.Group {
 
         this.createMultiple({
             classType: Projectile,
-            frameQuantity: 10,
+            frameQuantity: 350,
             active: false,
             visible: false,
             key: 'projectile'
@@ -13,10 +13,10 @@ class ProjectileGroup extends Phaser.Physics.Arcade.Group {
         
     }
 
-    fireProjectile(x, y, slope) {
+    fireProjectile(x, y, slope, horizontal) {
         const projectile = this.getFirstDead(false);
         if (projectile) {
-                projectile.shoot(x, y, slope);
+                projectile.shoot(x, y, slope, horizontal);
         }
     }
 }

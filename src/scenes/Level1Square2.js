@@ -42,43 +42,43 @@ class Level1Square2 extends Phaser.Scene {
         this.Enemy8 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
         this.Enemy9 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
         this.Enemy10 = new Enemy(this, Math.random() * (907 - 62) + 62, Math.random() * (904 - 59) + 59, 'meleeEnemy', 0).setOrigin(0,0);         // fire laser
-        while(this.Enemy1.x >= 801 && this.Enemy1.y >= 750){
+        while(this.Enemy1.x >= 770 && this.Enemy1.y >= 750){
             this.Enemy1.x = Math.random() * (907 - 62) + 62;
             this.Enemy1.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy2.x >= 801 && this.Enemy2.y >= 750){
+        while(this.Enemy2.x >= 770 && this.Enemy2.y >= 750){
             this.Enemy2.x = Math.random() * (907 - 62) + 62;
             this.Enemy2.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy3.x >= 801 && this.Enemy3.y >= 750){
+        while(this.Enemy3.x >= 770 && this.Enemy3.y >= 750){
             this.Enemy3.x = Math.random() * (907 - 62) + 62;
             this.Enemy3.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy4.x >= 801 && this.Enemy4.y >= 750){
+        while(this.Enemy4.x >= 770 && this.Enemy4.y >= 750){
             this.Enemy4.x = Math.random() * (907 - 62) + 62;
             this.Enemy4.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy5.x >= 801 && this.Enemy5.y >= 750){
+        while(this.Enemy5.x >= 770 && this.Enemy5.y >= 750){
             this.Enemy5.x = Math.random() * (907 - 62) + 62;
             this.Enemy5.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy6.x >= 801 && this.Enemy6.y >= 750){
+        while(this.Enemy6.x >= 770 && this.Enemy6.y >= 750){
             this.Enemy6.x = Math.random() * (907 - 62) + 62;
             this.Enemy6.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy7.x >= 801 && this.Enemy7.y >= 750){
+        while(this.Enemy7.x >= 770 && this.Enemy7.y >= 750){
             this.Enemy7.x = Math.random() * (907 - 62) + 62;
             this.Enemy7.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy8.x >= 801 && this.Enemy8.y >= 750){
+        while(this.Enemy8.x >= 770 && this.Enemy8.y >= 750){
             this.Enemy8.x = Math.random() * (907 - 62) + 62;
             this.Enemy8.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy9.x >= 801 && this.Enemy9.y >= 750){
+        while(this.Enemy9.x >= 770 && this.Enemy9.y >= 750){
             this.Enemy9.x = Math.random() * (907 - 62) + 62;
             this.Enemy9.y = Math.random() * (904 - 59) + 59;
         }
-        while(this.Enemy10.x >= 801 && this.Enemy10.y >= 750){
+        while(this.Enemy10.x >= 770 && this.Enemy10.y >= 750){
             this.Enemy10.x = Math.random() * (907 - 62) + 62;
             this.Enemy10.y = Math.random() * (904 - 59) + 59;
         }
@@ -145,7 +145,8 @@ class Level1Square2 extends Phaser.Scene {
                 y: 134,
                 gameover: false,
                 screen: 12,
-                key: false 
+                key: false ,
+                hit: false
             }
             this.scene.restart();
         }
@@ -157,7 +158,8 @@ class Level1Square2 extends Phaser.Scene {
                     y: this.explorer.y,
                     gameover: false,
                     screen: 11,
-                    key: false
+                    key: false,
+                    hit: false
                 }
             }
             else{
@@ -166,7 +168,8 @@ class Level1Square2 extends Phaser.Scene {
                     y: this.explorer.y,
                     gameover: false,
                     screen: 11,
-                    key: true 
+                    key: true, 
+                    hit: false
                 }
             }
             this.scene.start("Level1Square1");
@@ -200,7 +203,8 @@ class Level1Square2 extends Phaser.Scene {
                     y: 955,
                     gameover: false,
                     screen: 13,
-                    key: false
+                    key: false,
+                    hit: false
                 }
             }
             else if(this.explorer.x >= 579){
@@ -209,10 +213,11 @@ class Level1Square2 extends Phaser.Scene {
                      y: 955,
                      gameover: false,
                      screen: 13,
-                     key: false
+                     key: false,
+                     hit: false
                  }
-             }
-                this.scene.start("Level1Square3");
+            }
+            this.scene.start("Level1Square3");
         }
         if(game.settings.key){
             this.nextArea2.setTexture('nextAreaFire');

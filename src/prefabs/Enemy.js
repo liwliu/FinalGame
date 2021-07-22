@@ -18,8 +18,8 @@ class Enemy extends Phaser.GameObjects.Sprite {
         
 
     beginShoot(){
-        if ((this.checkProximity(this.scene.explorer, this))){
-           this.projectileGroup.fireProjectile(this.x, this.y, this.getSlope(this.scene.explorer, this));
+        if ((this.checkProximity(this.scene.explorer, this)) || (game.settings.screen == 13 && ((this.x == 501 && this.y == 490) || (this.x == 387 && this.y == 110)))){
+           this.projectileGroup.fireProjectile(this.x, this.y, this.getSlope(this.scene.explorer, this), this.horizontal);
         }
     }
 

@@ -39,6 +39,12 @@ class Level1Square3 extends Phaser.Scene {
          //botmid
          this.thirdMidWallBot = this.add.tileSprite(545, 390, 320, 64, 'midBotWall3').setOrigin(0,0);
 
+         //load enemies
+         this.Enemy1 = new Enemy(this, 501, 490, 'meleeEnemy', 0).setOrigin(0,0); 
+         this.Enemy2 = new Enemy(this, 387, 110, 'meleeEnemy', 0).setOrigin(0,0); 
+         this.Enemy3 = new Enemy(this, 560, 580, 'meleeEnemy', 0).setOrigin(0,0); 
+         this.Enemy4 = new Enemy(this, 90, 655, 'meleeEnemy', 0).setOrigin(0,0); 
+         this.Enemy5 = new Enemy(this, 156, 315, 'meleeEnemy', 0).setOrigin(0,0); 
         //load rock
          this.rock3Entrance = new Rock(this, 706, 655, 'rock', 0).setOrigin(0,0);
          this.rock3 = new Rock(this, 181, 795, 'rock', 0).setOrigin(0,0);
@@ -61,6 +67,10 @@ class Level1Square3 extends Phaser.Scene {
 
         this.cameras.main.startFollow(this.explorer);
 
+        //timer
+        this.horizontaltimer = 0;
+        this.timer = 0;
+
         //set keyboard input
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -68,13 +78,45 @@ class Level1Square3 extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
 
-    update() {
+    update(time, delta) {
         
         this.explorer.update();
         this.key.update();
         this.rock3.update();
         this.rock3Entrance.update();
+        this.Enemy1.update();
+        this.Enemy2.update();
+        this.Enemy3.update();
+        this.Enemy4.update();
+        this.Enemy5.update();
+
+        this.horizontaltimer += delta;
+        this.timer += delta;
         
+        while (this.horizontaltimer > 100) {
+            this.Enemy1.beginShoot();
+            this.Enemy2.beginShoot();
+            this.horizontaltimer -= 100;
+        }
+
+        while (this.timer > 2000) {
+            this.Enemy3.beginShoot();
+            this.Enemy4.beginShoot();
+            this.Enemy5.beginShoot();
+            this.timer -= 2000;
+        }
+
+        if(this.game.settings.hit){
+            game.settings= {
+                x: 750,
+                y: 955,
+                gameover: false,
+                screen: 13,
+                key: false,
+                hit: false
+            }
+            this.scene.restart();
+        }
 
         if(this.game.settings.gameover == true && this.explorer.y > 960){ 
             this.explorer.destroy();
@@ -84,7 +126,8 @@ class Level1Square3 extends Phaser.Scene {
                     y: 5.25,
                     gameover: false,
                     screen: 12,
-                    key: true
+                    key: true,
+                    hit: false
                 }
                 this.scene.start("Level1Square2");
             }
@@ -139,7 +182,8 @@ class Level1Square3 extends Phaser.Scene {
                     y: this.explorer.y,
                     gameover: false,
                     screen: 14,
-                    key: false
+                    key: false,
+                    hit: false
                 }
             this.scene.start("Level1Square4");
         }
